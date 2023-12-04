@@ -95,11 +95,11 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>X2CCode/Library/Control/Controller/lib/libdsPIC33AK_MC_Control.a</linkerLibFileItem>
-            <linkerLibFileItem>X2CCode/Library/Filter/Controller/lib/libdsPIC33AK_MC_Filter.a</linkerLibFileItem>
-            <linkerLibFileItem>X2CCode/Library/General/Controller/lib/libdsPIC33AK_MC_General.a</linkerLibFileItem>
-            <linkerLibFileItem>X2CCode/Library/Math/Controller/lib/libdsPIC33AK_MC_Math.a</linkerLibFileItem>
-            <linkerLibFileItem>X2CCode/Library/MCHP/Controller/lib/libdsPIC33AK_MC_MCHP.a</linkerLibFileItem>
+            <linkerLibFileItem>X2CCode/Library/libdsPIC33A_Control.a</linkerLibFileItem>
+            <linkerLibFileItem>X2CCode/Library/libdsPIC33A_Filter.a</linkerLibFileItem>
+            <linkerLibFileItem>X2CCode/Library/libdsPIC33A_General.a</linkerLibFileItem>
+            <linkerLibFileItem>X2CCode/Library/libdsPIC33A_Math.a</linkerLibFileItem>
+            <linkerLibFileItem>X2CCode/Library/libdsPIC33A_MCHP.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -334,6 +334,8 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="800000-81ffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/_projects/blinky_dspic33ak_fip_mclv48.X/debug/default/blinky_dspic33ak_fip_mclv48_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
@@ -436,6 +438,8 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="800000-81ffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/_projects/blinky_dspic33ak_fip_mclv48.X/debug/default/blinky_dspic33ak_fip_mclv48_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
