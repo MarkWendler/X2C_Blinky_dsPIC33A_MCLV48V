@@ -1,12 +1,13 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
-/* Model: blinky_dspic33ck_lvmc                                                                                       */
-/* Date:  2023-11-27 22:30                                                                                            */
+/* Model: blinky_dspic33ak_fip_mclv48                                                                                 */
+/* Date:  2024-09-12 10:33                                                                                            */
 
-/* X2C-Version: 6.4.2980                                                                                              */
+/* X2C-Version: 6.5.3419                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
 
 /* Common includes                                                                                                    */
+#include <stddef.h>
 #include "TableStruct.h"
 /* Generated file includes                                                                                            */
 #include "FlashTable.h"
@@ -18,37 +19,51 @@
 /**********************************************************************************************************************/
 struct x2cModel x2cModel;
 
+/* Model identifier                                                                                                   */
+const uint32 x2cModelIdentifier = 0xCF466559U;
+
 /**********************************************************************************************************************/
 /**                                                       Scope                                                      **/
 /**********************************************************************************************************************/
 SCOPE_MAIN x2cScope;
 
 /* Block function table                                                                                               */
-#define END_BLOCKFUNCTIONS { (uint16)0, (void (*)(void*))0, (void (*)(void*))0, \
-    (tLoadImplementationParameter)0, (tSaveImplementationParameter)0, (void* (*)(const void*, uint16))0 }
 const tBlockFunctions blockFunctionTable[] = {
     FUNCTIONS,
-    END_BLOCKFUNCTIONS
+    { 0U, NULL, NULL, NULL, NULL, NULL } /* End of table entry */
 };
 
 /* Parameter identifier table                                                                                         */
-#define END_PARAMETERTABLE { (uint16)0, (void*)0 }
 const tParameterTable parameterIdTable[] = {
     PARAMETER_TABLE,
-    END_PARAMETERTABLE
+    { 0U, NULL } /* End of table entry */
 };
 
 /* Inport Parameter identifier table                                                                                  */
-#define END_PARAMID_IO_TABLE { 0, 0, (void*)0 }
 const tIoParamIdEntry inportParamIdTable[] = {
     INPORT_PARAMID_TABLE, 
-    END_PARAMID_IO_TABLE
+    { 0U, 0U, NULL } /* End of table entry */
 };
 
 /* Outport Parameter identifier table                                                                                 */
 const tIoParamIdEntry outportParamIdTable[] = {
     OUTPORT_PARAMID_TABLE, 
-    END_PARAMID_IO_TABLE
+    { 0U, 0U, NULL } /* End of table entry */
+};
+
+/* Mask Parameter identifier table                                                                                    */
+const tMaskParameterEntry maskParamIdTable[] = {
+    { 0U, NULL, NULL, NULL, NULL } /* End of table entry */
+};
+
+/* Extended Mask Parameter identifier table (used by Model API)                                                       */
+const tMaskParamExtRecord maskParamExtTable[] = {
+    { 0U, 0U, NULL, NULL, NULL, NULL, NULL } /* End of table entry */
+};
+
+/* Mask Parameter data table (used by Model API)                                                                      */
+const tMaskParamDataRecord maskParamDataTable[] = {
+    { 0U, 0U, NULL, 0U, 0U } /* End of table entry */
 };
 
 /**********************************************************************************************************************/
@@ -72,23 +87,21 @@ void X2C_Init(void)
     /* Value = 0.5                                                                                                    */
     x2cModel.blocks.bAmplitude.K = 16384;
 
-    /* Block: AutoSwitch                                                                                              */
-    /* Thresh_up = 0.3                                                                                                */
-    /* Thresh_down = -0.3                                                                                             */
-    x2cModel.blocks.bAutoSwitch.Thresh_up = 9830;
-    x2cModel.blocks.bAutoSwitch.Thresh_down = -9830;
-    x2cModel.blocks.bAutoSwitch.Status = &RamTable_int16[0];
-
     /* Block: AutoSwitch1                                                                                             */
     /* Thresh_up = 0.0                                                                                                */
     /* Thresh_down = 0.0                                                                                              */
     x2cModel.blocks.bAutoSwitch1.Thresh_up = 0;
     x2cModel.blocks.bAutoSwitch1.Thresh_down = 0;
-    x2cModel.blocks.bAutoSwitch1.Status = &RamTable_int16[1];
+    x2cModel.blocks.bAutoSwitch1.Status = &RamTable_int16[0];
 
     /* Block: Frequency                                                                                               */
     /* Value = 0.001                                                                                                  */
     x2cModel.blocks.bFrequency.K = 33;
+
+    /* Block: Gain                                                                                                    */
+    /* Gain = 0.03                                                                                                    */
+    x2cModel.blocks.bGain.V = 983;
+    x2cModel.blocks.bGain.sfr = 15;
 
     /* Block: LED off                                                                                                 */
     /* Value = 0.0                                                                                                    */
@@ -103,7 +116,7 @@ void X2C_Init(void)
     /* Thresh_down = -0.5                                                                                             */
     x2cModel.blocks.sOscillator.bAutoSwitch.Thresh_up = 16384;
     x2cModel.blocks.sOscillator.bAutoSwitch.Thresh_down = -16384;
-    x2cModel.blocks.sOscillator.bAutoSwitch.Status = &RamTable_int16[2];
+    x2cModel.blocks.sOscillator.bAutoSwitch.Status = &RamTable_int16[1];
 
     /* Block: Oscillator/Constant                                                                                     */
     /* Value = 1.0                                                                                                    */
@@ -177,14 +190,6 @@ void X2C_Init(void)
 
     /* Block Amplitude                                                                                                */
 
-    /* Block AutoSwitch                                                                                               */
-    x2cModel.blocks.bAutoSwitch.In1 =
-        &x2cModel.blocks.bLED_off.Out;
-    x2cModel.blocks.bAutoSwitch.Switch =
-        &x2cModel.inports.bVPot;
-    x2cModel.blocks.bAutoSwitch.In3 =
-        &x2cModel.blocks.bLED_on.Out;
-
     /* Block AutoSwitch1                                                                                              */
     x2cModel.blocks.bAutoSwitch1.In1 =
         &x2cModel.blocks.bLED_off.Out;
@@ -194,6 +199,10 @@ void X2C_Init(void)
         &x2cModel.blocks.bLED_on.Out;
 
     /* Block Frequency                                                                                                */
+
+    /* Block Gain                                                                                                     */
+    x2cModel.blocks.bGain.In =
+        &x2cModel.inports.bVPot;
 
     /* Block LEDoff                                                                                                   */
 
@@ -243,7 +252,7 @@ void X2C_Init(void)
     x2cModel.blocks.bSinGen.A =
         &x2cModel.blocks.bAmplitude.Out;
     x2cModel.blocks.bSinGen.f =
-        &x2cModel.blocks.bFrequency.Out;
+        &x2cModel.blocks.bGain.Out;
 
     /******************************************************************************************************************/
     /**                                                 Link Outports                                                **/
@@ -261,9 +270,9 @@ void X2C_Init(void)
     /**                                           Run Block Init Functions                                           **/
     /******************************************************************************************************************/
     Constant_FiP16_Init(&x2cModel.blocks.bAmplitude);
-    AutoSwitch_FiP16_Init(&x2cModel.blocks.bAutoSwitch);
     AutoSwitch_FiP16_Init(&x2cModel.blocks.bAutoSwitch1);
     Constant_FiP16_Init(&x2cModel.blocks.bFrequency);
+    Gain_FiP16_Init(&x2cModel.blocks.bGain);
     Constant_FiP16_Init(&x2cModel.blocks.bLED_off);
     Constant_FiP16_Init(&x2cModel.blocks.bLED_on);
     AutoSwitch_FiP16_Init(&x2cModel.blocks.sOscillator.bAutoSwitch);
@@ -283,8 +292,7 @@ void X2C_Init(void)
     TableStruct->TParamTable = parameterIdTable;
     TableStruct->inportParamTable = inportParamIdTable;
     TableStruct->outportParamTable = outportParamIdTable;
-    /* Conversion-on-Target feature not used                                                                          */
-    TableStruct->maskParameterTable = (tMaskParameterEntry*)0;
+    TableStruct->maskParameterTable = maskParamIdTable;
 }
 
 /**********************************************************************************************************************/
@@ -307,6 +315,7 @@ void X2C_Update(void)
 void X2C_Update_1(void)
 {
     LoopBreaker_FiP16_Update(&x2cModel.blocks.sOscillator.bLoopBreaker);
+    Gain_FiP16_Update(&x2cModel.blocks.bGain);
     Negation_FiP16_Update(&x2cModel.blocks.sOscillator.bNegation);
     SinGen_FiP16_Update(&x2cModel.blocks.bSinGen);
     AutoSwitch_FiP16_Update(&x2cModel.blocks.bAutoSwitch1);
@@ -319,7 +328,6 @@ void X2C_Update_1(void)
 /* X2C_Update for blocks with 3*Ts                                                                                    */
 void X2C_Update_3(void)
 {
-    AutoSwitch_FiP16_Update(&x2cModel.blocks.bAutoSwitch);
     I_FiP16_Update(&x2cModel.blocks.sOscillator.bI);
 }
 

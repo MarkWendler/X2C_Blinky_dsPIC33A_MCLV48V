@@ -29,9 +29,10 @@
  */
 /*
  * This file is part of X2C. http://x2c.lcm.at/
- * $LastChangedRevision: 1852 $
- * $LastChangedDate:: 2020-03-10 16:35:19 +0100#$
+ * $LastChangedRevision: 3221 $
+ * $LastChangedDate:: 2024-04-24 16:07:09 +0200#$
  */
+#include <stddef.h>
 #include "TableStruct.h"
 
 /* init tablestruct */
@@ -39,37 +40,38 @@ void initTableStruct(void)
 {
 	uint8 i;
 
-	TableStruct->TParamTable = (tParameterTable*)0;
-	TableStruct->TFncTable = (tBlockFunctions*)0;
-	TableStruct->TLimitSaveFncTable = (tLimitSaveFunctionTable*)0;
+	TableStruct->TParamTable = NULL;
+	TableStruct->TFncTable = NULL;
+	TableStruct->TLimitSaveFncTable = NULL;
 
 	TableStruct->DSPState = BOOTLOADER_STATE;
-	TableStruct->eventType = (uint16)0x0000;
-	TableStruct->eventId = (uint32)0x00000000;
+	TableStruct->eventType = (uint16)0x0000U;
+	TableStruct->eventId = (uint32)0x00000000U;
 
-	TableStruct->protocolCount = (uint16)0;
+	TableStruct->protocolCount = (uint16)0U;
 	for (i = 0; i < MAX_PROTOCOLS; i++)
 	{
-		TableStruct->protocols[i] = (tProtocol*)0;
+		TableStruct->protocols[i] = NULL;
 	}
 
-	TableStruct->framePrgVersion = (uint16)0x0000;
-	TableStruct->framePrgCompDateTime = (uint8*)0;
+	TableStruct->framePrgVersion = (uint16)0x0000U;
+	TableStruct->framePrgCompDateTime = NULL;
 
-	TableStruct->piScope = (SCOPE_MAIN*)0;
-	TableStruct->dynamicCodeData = (tDynamicCodeData*)0;
+	TableStruct->piScope = NULL;
+	TableStruct->dynamicCodeData = NULL;
 
-	TableStruct->inportParamTable = (tIoParamIdEntry*)0;
-	TableStruct->outportParamTable = (tIoParamIdEntry*)0;
-	TableStruct->maskParameterTable = (tMaskParameterEntry*)0;
+	TableStruct->inportParamTable = NULL;
+	TableStruct->outportParamTable = NULL;
+	TableStruct->maskParameterTable = NULL;
 }
 
 
 /* add tProtocol to TableStruct */
-void addTableStructProtocol(tProtocol* linkProtocol)
+void addTableStructProtocol(tProtocol* protocol)
 {
 	if (TableStruct->protocolCount < MAX_PROTOCOLS)
 	{
-		TableStruct->protocols[TableStruct->protocolCount++] = linkProtocol;
+		TableStruct->protocols[TableStruct->protocolCount] = protocol;
+		TableStruct->protocolCount++;
 	}
 }

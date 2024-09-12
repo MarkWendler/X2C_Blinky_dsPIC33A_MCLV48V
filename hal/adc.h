@@ -65,9 +65,9 @@
 // *****************************************************************************
 // *****************************************************************************
 // ADC MODULE Related Definitions
-#define ADCBUF_IA     AD1DATA0
-#define ADCBUF_IB     AD2DATA0
-#define ADCBUF_POT    AD1DATA1
+#define ADCBUF_IA     AD1CH0DATA
+#define ADCBUF_IB     AD2CH0DATA
+#define ADCBUF_POT    AD1CH1DATA
 /* This defines number of current offset samples for averaging 
  * If the 2^n samples are considered specify n(in this case 2^7(= 128)=> 7*/
 #define  CURRENT_OFFSET_SAMPLE_SCALER         7

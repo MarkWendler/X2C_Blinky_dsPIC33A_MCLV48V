@@ -36,7 +36,7 @@
  */
 /*
  * This file is part of X2C. http://x2c.lcm.at/
- * $LastChangedRevision: 1852 $
+ * $LastChangedRevision: 3206 $
  * $LastChangedDate:: 2016-02-18 12:04:02 +0100#$
  */
 #ifndef ATAN_DATA
@@ -51,6 +51,9 @@ extern "C" {
 extern const int8 Atan_Table8[257];
 extern const int16 Atan_Table16[257];
 extern const int32 Atan_Table32[257];
+
+extern const int16 Tan_Table16[257];
+extern const int32 Tan_Table32[257];
 
 #ifdef __cplusplus
 }

@@ -239,7 +239,7 @@ void UART1_Initialize (void)
         1 = BRG rolled over during the auto-baud rate acquisition sequence
         0 = BRG has not rolled over during the auto-baud rate acquisition 
             sequence*/
-    U1STAbits.ABDOVF = 0;
+    U1STAbits.ABDOVIF= 0;
     /*  Checksum Error Interrupt Flag bit 
         1 = Checksum error , 0 = No checksum error*/
     U1STAbits.CERIF = 0;

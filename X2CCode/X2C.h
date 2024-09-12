@@ -2,17 +2,17 @@
  * @file
  * @brief Generated model file.
  * 
- * Date:  2023-11-27 22:30
+ * Date:  2024-09-12 10:33
  * 
- * X2C-Version: 6.4.2980
+ * X2C-Version: 6.5.3419
  * X2C-Edition: Free
  */
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
-/* Model: blinky_dspic33ck_lvmc                                                                                       */
-/* Date:  2023-11-27 22:30                                                                                            */
+/* Model: blinky_dspic33ak_fip_mclv48                                                                                 */
+/* Date:  2024-09-12 10:33                                                                                            */
 
-/* X2C-Version: 6.4.2980                                                                                              */
+/* X2C-Version: 6.5.3419                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
 
 #ifndef X2C_H
@@ -27,6 +27,7 @@ extern "C" {
 /**********************************************************************************************************************/
 /* Common includes                                                                                                    */
 #include "Constant_Bool.h"
+#include "Gain_FiP16.h"
 #include "SinGen_FiP16.h"
 #include "Constant_FiP16.h"
 #include "I_FiP16.h"
@@ -43,6 +44,7 @@ extern "C" {
 /**********************************************************************************************************************/
 #define FUNCTIONS \
     CONSTANT_BOOL_FUNCTIONS , \
+    GAIN_FIP16_FUNCTIONS , \
     SINGEN_FIP16_FUNCTIONS , \
     CONSTANT_FIP16_FUNCTIONS , \
     I_FIP16_FUNCTIONS , \
@@ -54,35 +56,35 @@ extern "C" {
     SCOPE_MAIN_FUNCTIONS
 
 #define PARAMETER_TABLE \
-    { 1, &x2cModel.blocks.bAmplitude } , \
-    { 2, &x2cModel.blocks.bAutoSwitch } , \
-    { 3, &x2cModel.blocks.bAutoSwitch1 } , \
-    { 4, &x2cModel.blocks.bFrequency } , \
-    { 5, &x2cModel.blocks.bLED_off } , \
-    { 6, &x2cModel.blocks.bLED_on } , \
-    { 7, &x2cModel.blocks.sOscillator.bAutoSwitch } , \
-    { 8, &x2cModel.blocks.sOscillator.bConstant } , \
-    { 9, &x2cModel.blocks.sOscillator.bEnable } , \
-    { 10, &x2cModel.blocks.sOscillator.bI } , \
-    { 11, &x2cModel.blocks.sOscillator.bInit } , \
-    { 12, &x2cModel.blocks.sOscillator.bLoopBreaker } , \
-    { 13, &x2cModel.blocks.sOscillator.bNegation } , \
-    { 14, &x2cModel.blocks.bPT1 } , \
-    { 15, &x2cModel.blocks.bSin3Gen } , \
-    { 16, &x2cModel.blocks.bSinGen } , \
-    { 25, &x2cScope }
+    { 1U, &x2cModel.blocks.bAmplitude } , \
+    { 2U, &x2cModel.blocks.bAutoSwitch1 } , \
+    { 3U, &x2cModel.blocks.bFrequency } , \
+    { 4U, &x2cModel.blocks.bGain } , \
+    { 5U, &x2cModel.blocks.bLED_off } , \
+    { 6U, &x2cModel.blocks.bLED_on } , \
+    { 7U, &x2cModel.blocks.sOscillator.bAutoSwitch } , \
+    { 8U, &x2cModel.blocks.sOscillator.bConstant } , \
+    { 9U, &x2cModel.blocks.sOscillator.bEnable } , \
+    { 10U, &x2cModel.blocks.sOscillator.bI } , \
+    { 11U, &x2cModel.blocks.sOscillator.bInit } , \
+    { 12U, &x2cModel.blocks.sOscillator.bLoopBreaker } , \
+    { 13U, &x2cModel.blocks.sOscillator.bNegation } , \
+    { 14U, &x2cModel.blocks.bPT1 } , \
+    { 15U, &x2cModel.blocks.bSin3Gen } , \
+    { 16U, &x2cModel.blocks.bSinGen } , \
+    { 25U, &x2cScope }
 
 #define INPORT_PARAMID_TABLE \
-    { 17, 2, &x2cModel.inports.bCPULoad } , \
-    { 18, 2, &x2cModel.inports.bSW1 } , \
-    { 19, 2, &x2cModel.inports.bSW2 } , \
-    { 20, 2, &x2cModel.inports.bVPot } 
+    { 17U, 2U, &x2cModel.inports.bCPULoad } , \
+    { 18U, 2U, &x2cModel.inports.bSW1 } , \
+    { 19U, 2U, &x2cModel.inports.bSW2 } , \
+    { 20U, 2U, &x2cModel.inports.bVPot } 
 
 #define OUTPORT_PARAMID_TABLE \
-    { 21, 2, &x2cModel.outports.bFLT } , \
-    { 22, 2, &x2cModel.outports.bLED1 } , \
-    { 23, 2, &x2cModel.outports.bLED2 } , \
-    { 24, 2, &x2cModel.outports.bOsc_out } 
+    { 21U, 2U, &x2cModel.outports.bFLT } , \
+    { 22U, 2U, &x2cModel.outports.bLED1 } , \
+    { 23U, 2U, &x2cModel.outports.bLED2 } , \
+    { 24U, 2U, &x2cModel.outports.bOsc_out } 
 
 
 /**********************************************************************************************************************/
@@ -102,9 +104,9 @@ struct x2cModel {
             NEGATION_FIP16 bNegation;
         } sOscillator;
         CONSTANT_FIP16 bAmplitude;
-        AUTOSWITCH_FIP16 bAutoSwitch;
         AUTOSWITCH_FIP16 bAutoSwitch1;
         CONSTANT_FIP16 bFrequency;
+        GAIN_FIP16 bGain;
         CONSTANT_FIP16 bLED_off;
         CONSTANT_FIP16 bLED_on;
         PT1_FIP16 bPT1;
@@ -132,10 +134,15 @@ struct x2cModel {
 /**********************************************************************************************************************/
 extern struct x2cModel x2cModel;
 
+extern const uint32 x2cModelIdentifier;
+
 extern const tBlockFunctions blockFunctionTable[];
 extern const tParameterTable parameterIdTable[];
 extern const tIoParamIdEntry inportParamIdTable[];
 extern const tIoParamIdEntry outportParamIdTable[];
+extern const tMaskParameterEntry maskParamIdTable[];
+extern const tMaskParamExtRecord maskParamExtTable[];
+extern const tMaskParamDataRecord maskParamDataTable[];
 
 #define X2C_UPDATE_3_DIVIDER 3
 

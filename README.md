@@ -1,29 +1,25 @@
 # Model based X2C Blinky demo MCLV-48V-300W and dsPIC33AK128MC106 Motor Control DIM
 
 ## 1. INTRODUCTION
-This document describes the setup requirements for driving a Permanent Magnet Synchronous Motor (PMSM) using Sensorless Field Oriented Control (FOC) and PLL Estimator Algorithms on the hardware platform MCLV-48V-300W Inverter Board and dsPIC33AK128MC106 Motor Control Dual In-line Module (DIM).
+This is a model based design with X2C. It is a minimalistic blinky demo code to show basic usage of the tools and the dsPIC33A MCU.
 
-For details about PLL estimator refer to Microchip application note [AN1292](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ApplicationNotes/ApplicationNotes/01292A.pdf) “Sensorless Field Oriented Control (FOC) for a Permanent Magnet Synchronous Motor (PMSM) Using a PLL Estimator and Field Weakening (FW)”
 
-</br>
-
-## 2. SUGGESTED DEMONSTRATION REQUIREMENTS
+## 2. REQUIREMENTS
 
 ### 2.2 Software Tools Used for Testing the firmware
-- MPLAB® X IDE **MPLABX v6.15** 
-- DFP: **dsPIC33AK-MC_DEV_DFP v0.1.59**
-- MPLAB® XC16 Compiler **XC-DSC_3.15.B2**
+- MPLAB® X IDE **MPLABX v6.20** 
+- DFP: **dsPIC33AK-MC_DEV_DFP v1.0.33** Update process: [link](https://microchip.my.site.com/s/article/Programming-and-Debugging-the-dsPIC33A-on-MPLAB-X-IDE-v6-20-and-IPE-v6-20)
+- MPLAB® XC16 Compiler **XC-DSC_3.10**
 - MPLAB® PICkit™ on board 4 In-Circuit Debugger 
 - Scilab v2023.1.0
-- X2C v6.4.2980
+- X2C v6.5.3419
 
-Please refer to [(link)](https://confluence.microchip.com/display/MCU16APP/MC+-+dsPIC33AK128MC106+validation+by+MC+team) for information on software used.
+
 
 ### 2.3 Hardware Tools Required for the Demonstration
-- MCLV-48V-300W Inverter Board (EV18H47A)
-- dsPIC33AK128MC106 Motor Control Dual In-line Module 
+- MCLV-48V-300W Inverter Board [(EV18H47A)](https://www.microchip.com/en-us/development-tool/EV18H47A)
+- dsPIC33AK128MC106 Motor Control Dual In-line Module [(EV68M17A)](https://www.microchip.com/en-us/development-tool/EV68M17A)
 - 24V Power Supply [(AC002013)](https://www.microchipdirect.com/dev-tools/AC002013)
-- 24V 3-Phase Brushless DC Motor [(AC300020)](https://www.microchip.com/en-us/development-tool/AC300020).
 
 > **_NOTE:_**
 > All items listed under the section Hardware Tools Required for the Demonstration are available at [microchip DIRECT](https://www.microchipdirect.com/)
@@ -51,10 +47,11 @@ Please refer to [(link)](https://confluence.microchip.com/display/MCU16APP/MC+-+
 ## 4. SOFTWARE SETUP AND RUN
 ### 4.1 Setup: MPLAB X IDE and MPLAB XC-DSC Compiler
 
-Install MPLAB X IDE and MPLAB XC-DSC Compiler versions that support the device dsPIC33AK128MC106. The MPLAB X IDE, MPLAB XC-DSC Compiler, and X2C-Scope plug-in used for testing the firmware are mentioned in the [Motor Control Application Firmware Required for the Demonstration](#21-motor-control-application-firmware-required-for-the-demonstration) section. To get help on  
+Install MPLAB X IDE and MPLAB XC-DSC Compiler versions that support the device dsPIC33AK128MC106. 
 
 - MPLAB X IDE installation, refer [link](https://microchipdeveloper.com/mplabx:installation)
 - MPLAB XC-DSC Compiler installation steps, refer [link](https://microchipdeveloper.com/XCDSC:installation)
+- Update MPLAB X programmer/debugger interface plugins and Device Firmware Packages (DFP) [link](https://microchip.my.site.com/s/article/Programming-and-Debugging-the-dsPIC33A-on-MPLAB-X-IDE-v6-20-and-IPE-v6-20)
 
 ## 5.0 Peripheral Connections: 
    **Interrupt to call X2C Model** : This is a UI component in the X2C MCC UI. User has options to select different 

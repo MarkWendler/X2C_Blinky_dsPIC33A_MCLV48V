@@ -29,8 +29,8 @@
  */
 /*
  * This file is part of X2C. http://x2c.lcm.at/
- * $LastChangedRevision: 2896 $
- * $LastChangedDate:: 2023-08-11 17:48:24 +0200#$
+ * $LastChangedRevision: 3417 $
+ * $LastChangedDate:: 2024-08-29 21:03:43 +0200#$
  */
 #include "TableStruct.h"
 #include "Services.h"
@@ -46,6 +46,8 @@
 #define DEVINFO_PROCESSOR_ID ((uint16)0x8220)
 #elif defined(__GENERIC_MICROCHIP_PIC24__)
 #define DEVINFO_PROCESSOR_ID ((uint16)0x8230)
+#elif defined(X2C_GENERIC_MICROCHIP_DSPIC33A)
+#define DEVINFO_PROCESSOR_ID ((uint16)0x8240)
 #elif defined(__GENERIC_ARM_ARMV7__)
 #define DEVINFO_PROCESSOR_ID ((uint16)0x8310)
 #elif defined(__GENERIC_ARM_ARMV6__)
@@ -119,7 +121,14 @@
 
 /* TMS320F2837x */
 #elif defined(X2C_TMS320F28379D)
+/**
+ * Keep for legacy purposes only - this device identifier uses a memory map without NVM reset management.
+ * New implementations shall use the X2C_TMS320F28379D_NVM_RM device identifier.
+ */
 #define DEVINFO_PROCESSOR_ID ((uint16)0x0191)
+#warning THIS DEVICE IDENTIFIER SHALL NOT BE USED FOR NEW IMPLEMENTATIONS - USE DEVICE IDENTIFIER 0x0192 INSTEAD
+#elif defined(X2C_TMS320F28379D_NVM_RM)
+#define DEVINFO_PROCESSOR_ID ((uint16)0x0192)
 
 /* TMS320F28004x */
 #elif defined(X2C_TMS320F280049)
@@ -258,6 +267,14 @@
 #elif defined(X2C_STM32G474ME)
 #define DEVINFO_PROCESSOR_ID ((uint16)0x0383)
 
+/* STM32H5 */
+#elif defined(X2C_STM32H562ZG)
+#define DEVINFO_PROCESSOR_ID (0x0391U)
+#elif defined(X2C_STM32H563ZI)
+#define DEVINFO_PROCESSOR_ID (0x0392U)
+#elif defined(X2C_STM32H562VG)
+#define DEVINFO_PROCESSOR_ID (0x0393U)
+
 /* MC56F8xxx */
 #elif defined(__MC56F8XXX__)
 /* mc56f8345 -> dsp id = 0x411 */
@@ -317,10 +334,10 @@ void sendSvNotAvailable(tProtocol* protocol)
 }
 
 /* send error */
-void sendError(tProtocol* protocol, uint8 ucErrorNr)
+void sendError(tProtocol* protocol, uint8 errorId)
 {
 	protocol->ucFRAMESize = 2;
-	protocol->ucFRAMEData[1] = ucErrorNr;
+	protocol->ucFRAMEData[1] = errorId;
 	protocol->pSnd_Enable(protocol);
 }
 

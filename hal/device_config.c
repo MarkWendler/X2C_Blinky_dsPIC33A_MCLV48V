@@ -55,18 +55,16 @@
 #pragma config FCP_WPUCA = OFF          // User configuration areas write protection enable bits (Protection is disabled)
 
 // FICD
-//#pragma config FICD_ICS = PGx1          // Debugger pins selection bits (PGx1 pins are used)
 #pragma config FICD_JTAGEN = OFF         // JTAG enable bit (JTAG is enabled)
 
-// FDEVOPT1
-//#pragma config FDEVOPT1_PWMLOCK = OFF    // PWM registers protection enable bit (Unlock sequence must be executed to write PWM registers)
-#pragma config FDEVOPT1_ALTI2C1 = OFF   // Alternate I2C1 pins selection bit (Primary I2C1 pins are used)
-#pragma config FDEVOPT1_ALTI2C2 = OFF   // Alternate I2C2 pins selection bit (Primary I2C2 pins are used)
-#pragma config FDEVOPT1_BISTDIS = OFF   // Hardware RAM test disable bit (RAM test after reset is enabled)
-#pragma config FDEVOPT1_SPI2MAPDIS = OFF// SPI2 peripheral pin selection disable bit (SPI2 pins are selected by peripheral pin selection feature)
+// FDEVOPT
+#pragma config FDEVOPT_ALTI2C1 = OFF    // Alternate I2C1 pins selection bit (Primary I2C1 pins are used)
+#pragma config FDEVOPT_ALTI2C2 = OFF    // Alternate I2C2 pins selection bit (Primary I2C2 pins are used)
+#pragma config FDEVOPT_BISTDIS = OFF    // Hardware RAM test disable bit (RAM test after reset is enabled)
+#pragma config FDEVOPT_SPI2PIN = OFF    // SPI2 peripheral pin selection disable bit (SPI2 pins are selected by peripheral pin selection feature)
 
 // FWDT
-#pragma config FWDT_WINEN = OFF          // Watchdog Timer Window Enable bit (Watchdog Timer operates in Window mode)
+#pragma config FWDT_WINDIS = ON         // Watchdog Timer Window Enable bit (Watchdog Timer operates in Non-Window mode)
 #pragma config FWDT_SWDTMPS = PS2147483648// Sleep Mode Watchdog Timer Post Scaler select bits (1:2147483648)
 #pragma config FWDT_RCLKSEL = BPRC256   // Watchdog Timer Clock select bits (WDT Run Mode uses BFRC:256)
 #pragma config FWDT_RWDTPS = PS2147483648// Run Mode Watchdog Timer Post Scaler select bits (1:2147483648)
@@ -83,15 +81,14 @@
 //#pragma config FICDBKUP_ICS = PGx1      // Debugger pins selection bits backup (PGx1 pins are used)
 #pragma config FICDBKUP_JTAGEN = OFF     // JTAG enable bit backup (JTAG is enabled)
 
-// FDEVOPT1BKUP
-//#pragma config FDEVOPT1BKUP_PWMLOCK = OFF// PWM registers protection enable bit backup (Unlock sequence must be executed to write PWM registers)
-#pragma config FDEVOPT1BKUP_ALTI2C1 = OFF// Alternate I2C1 pins selection bit backup (Primary I2C1 pins are used)
-#pragma config FDEVOPT1BKUP_ALTI2C2 = OFF// Alternate I2C2 pins selection bit backup (Primary I2C2 pins are used)
-#pragma config FDEVOPT1BKUP_BISTDIS = OFF// Hardware RAM test disable bit backup (RAM test after reset is enabled)
-#pragma config FDEVOPT1BKUP_SPI2MAPDIS = OFF// SPI2 peripheral pin selection disable bit backup (SPI2 pins are selected by peripheral pin selection feature)
+// FDEVOPTBKUP
+#pragma config FDEVOPTBKUP_ALTI2C1 = OFF// Alternate I2C1 pins selection bit backup (Primary I2C1 pins are used)
+#pragma config FDEVOPTBKUP_ALTI2C2 = OFF// Alternate I2C2 pins selection bit backup (Primary I2C2 pins are used)
+#pragma config FDEVOPTBKUP_BISTDIS = OFF// Hardware RAM test disable bit backup (RAM test after reset is enabled)
+#pragma config FDEVOPTBKUP_SPI2PIN = OFF// SPI2 peripheral pin selection disable bit backup (SPI2 pins are selected by peripheral pin selection feature)
 
 // FWDTBKUP
-#pragma config FWDTBKUP_WINEN = OFF      // Watchdog Timer Window Enable bit backup (Watchdog Timer operates in Window mode)
+#pragma config FWDTBKUP_WINDIS = ON     // Watchdog Timer Window Enable bit (Watchdog Timer operates in Non-Window mode)
 #pragma config FWDTBKUP_SWDTMPS = PS2147483648// Sleep Mode Watchdog Timer Post Scaler select bits backup (1:2147483648)
 #pragma config FWDTBKUP_RCLKSEL = BPRC256// Watchdog Timer Clock select bits backup (WDT Run Mode uses BFRC:256)
 #pragma config FWDTBKUP_RWDTPS = PS2147483648// Run Mode Watchdog Timer Post Scaler select bits backup (1:2147483648)

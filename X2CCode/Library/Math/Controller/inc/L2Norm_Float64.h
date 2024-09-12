@@ -29,7 +29,7 @@
  */
 /*
  * This file is part of X2C. http://x2c.lcm.at/
- * $LastChangedRevision: 2584 $
+ * $LastChangedRevision: 3063 $
  */
 /* USERCODE-BEGIN:Description                                                                                         */
 /* Description:
@@ -52,14 +52,14 @@ extern "C" {
 typedef struct {
     uint16          ID;
     float64         *u1;
-    float32         *u2;
+    float64         *u2;
     float64         Out;
 } L2NORM_FLOAT64;
 #else
 typedef struct {
     uint16          ID;
     FLOAT64_PTR     u1;
-    FLOAT32_PTR     u2;
+    FLOAT64_PTR     u2;
     float64         Out;
 } L2NORM_FLOAT64;
 #endif

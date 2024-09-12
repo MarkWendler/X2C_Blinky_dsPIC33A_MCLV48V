@@ -33,8 +33,8 @@
  */
 /*
  * This file is part of X2C. http://x2c.lcm.at/
- * $LastChangedRevision: 2912 $
- * $LastChangedDate:: 2023-08-24 17:57:58 +0200#$
+ * $LastChangedRevision: 3417 $
+ * $LastChangedDate:: 2024-08-29 21:03:43 +0200#$
  */
 #ifndef TARGET_H
 #define TARGET_H
@@ -48,7 +48,8 @@ extern "C" {
 #define __DATA_WIDTH_16BIT__
 #define __ADDRESS_WIDTH_32BIT__
 
-#elif defined(__GENERIC_ARM_ARMV7__) || defined(__GENERIC_ARM_ARMV6__) || defined(__GENERIC_MICROCHIP_PIC32__)
+#elif defined(__GENERIC_ARM_ARMV7__) || defined(__GENERIC_ARM_ARMV6__) || defined(__GENERIC_MICROCHIP_PIC32__) || \
+    defined(X2C_GENERIC_MICROCHIP_DSPIC33A)
 #define __GENERIC_DEVICE_TYPE__
 #define __DATA_WIDTH_8BIT__
 #define __ADDRESS_WIDTH_32BIT__
@@ -110,7 +111,7 @@ typedef long double float64;
 #define __TMS320F281X__
 #elif defined(__TM4C123GH6__) || defined(__TM4C123BE6__) || defined(__TM4C1294NC__)
 #define __SERIES_TM4C__
-#elif defined(X2C_TMS320F28379D)
+#elif defined(X2C_TMS320F28379D) || defined(X2C_TMS320F28379D_NVM_RM)
 #define X2C_SERIES_TMS32F2837X
 #elif defined(X2C_TMS320F280039) || defined(X2C_TMS320F280037)
 #define X2C_SERIES_TMS320F28003X
@@ -137,6 +138,8 @@ defined(__STM32F100C6__) || defined(__STM32F103RB__) || defined(X2C_STM32F103RB)
 #define X2C_SERIES_STM32G0
 #elif defined(X2C_STM32G474RE) || defined(X2C_STM32G474RB) || defined(X2C_STM32G474ME)
 #define X2C_SERIES_STM32G4
+#elif defined(X2C_STM32H562ZG) || defined(X2C_STM32H562VG) || defined(X2C_STM32H563ZI)
+#define X2C_SERIES_STM32H5
 
 /* Renesas processors */
 #elif defined(__RX62T__) || defined(__R5F562TA__)
@@ -212,7 +215,7 @@ defined(__DSPIC33EP128GM604__) || defined(X2C_DSPIC33EP512GM604)
 #define __DATA_WIDTH_8BIT__
 
 #elif defined(X2C_SERIES_STM32F4) || defined(__SERIES_STM32F0__) || defined(__SERIES_STM32F1__) || defined(__SERIES_STM32F3__) || \
-    defined(X2C_SERIES_STM32G0) || defined(X2C_SERIES_STM32G4)
+    defined(X2C_SERIES_STM32G0) || defined(X2C_SERIES_STM32G4) || defined(X2C_SERIES_STM32H5)
 #define __VENDOR_ST__
 #define __ADDRESS_WIDTH_32BIT__
 #define __DATA_WIDTH_8BIT__
@@ -423,6 +426,19 @@ defined(__DSPIC33EP128GM604__) || defined(X2C_DSPIC33EP512GM604)
         LL_IWDG_ReloadCounter(IWDG); \
     } while (0)
 #endif
+#elif defined(X2C_SERIES_STM32H5)
+#if defined(USE_HAL_DRIVER)
+#define KICK_DOG \
+	do { \
+		HAL_IWDG_Refresh(&hiwdg); \
+	} while (0)
+#elif defined(USE_FULL_LL_DRIVER)
+#include "stm32h5xx_ll_iwdg.h"
+#define KICK_DOG \
+    do { \
+        LL_IWDG_ReloadCounter(IWDG); \
+    } while (0)
+#endif
 #elif defined(__RENESAS_RX__)
 #define KICK_DOG \
           do { \
@@ -546,7 +562,7 @@ defined(__DSPIC33EP128GM604__) || defined(X2C_DSPIC33EP512GM604)
 #define KICK_DOG SysCtl_serviceWatchdog()
 #define disableWatchdog SysCtl_disableWatchdog
 #define enableWatchdog SysCtl_enableWatchdog
-#define disableInterrupts Interrupt_disableMaster
+#define disableInterrupts Interrupt_disableGlobal
 
 #elif defined(X2C_SERIES_TMS320F28004X)
 #include "f28004x_device.h"
@@ -756,7 +772,7 @@ typedef double float64;
 
 #elif defined(__RENESAS_RX__) || \
   defined(__SERIES_STM32F0__) || defined(__SERIES_STM32F1__) || defined(__SERIES_STM32F3__) || defined(X2C_SERIES_STM32F4) || \
-  defined(X2C_SERIES_STM32G0) || defined(X2C_SERIES_STM32G4) || \
+  defined(X2C_SERIES_STM32G0) || defined(X2C_SERIES_STM32G4) || defined(X2C_SERIES_STM32H5) || \
   defined(__SERIES_TM4C__) || \
   defined(__SERIES_KECONTROL__) ||\
   defined(X2C_SERIES_XMC4800) || defined(X2C_SERIES_XMC4700) || defined(X2C_SERIES_XMC4400) || defined(X2C_SERIES_XMC4500)

@@ -61,7 +61,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include "clock.h"
-#include "../foc/userparms.h"
+#include "../userparms.h"
 // *****************************************************************************
 // *****************************************************************************
 // Section: Constants

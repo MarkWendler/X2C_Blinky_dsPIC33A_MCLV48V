@@ -288,10 +288,6 @@ void OpampConfig (void)
         01 Turn PMOS differential input pair off 
         00 Use both NMOS and PMOS differential input pair */
     AMP1CON1bits.DIFFCON = 0;
-    /** Bit 10 ? REFEN Input Reference Enable bit
-        1 Noninverting input connected to internal device voltage source
-        0 Noninverting input of op amp connected to user pin */
-    AMP1CON1bits.REFEN = 0;
     /** Bit 9 ? IMONEN Enable Input Monitor bit
         1 Enables positive input to ADC ; 
         0 Disables positive input to ADC */    
@@ -321,10 +317,6 @@ void OpampConfig (void)
         01 Turn PMOS differential input pair off 
         00 Use both NMOS and PMOS differential input pair */
     AMP2CON1bits.DIFFCON = 0;
-    /** Bit 10 ? REFEN Input Reference Enable bit
-        1 Noninverting input connected to internal device voltage source
-        0 Noninverting input of op amp connected to user pin */
-    AMP2CON1bits.REFEN = 0;
     /** Bit 9 ? IMONEN Enable Input Monitor bit
         1 Enables positive input to ADC ; 
         0 Disables positive input to ADC */    
@@ -354,10 +346,6 @@ void OpampConfig (void)
         01 Turn PMOS differential input pair off 
         00 Use both NMOS and PMOS differential input pair */
     AMP2CON1bits.DIFFCON = 0;
-    /** Bit 10 ? REFEN Input Reference Enable bit
-        1 Noninverting input connected to internal device voltage source
-        0 Noninverting input of op amp connected to user pin */
-    AMP2CON1bits.REFEN = 0;
     /** Bit 9 ? IMONEN Enable Input Monitor bit
         1 Enables positive input to ADC ; 
         0 Disables positive input to ADC */    
@@ -387,10 +375,6 @@ void OpampConfig (void)
         01 Turn PMOS differential input pair off 
         00 Use both NMOS and PMOS differential input pair */
     AMP3CON1bits.DIFFCON = 0;
-    /** Bit 10 ? REFEN Input Reference Enable bit
-        1 Noninverting input connected to internal device voltage source
-        0 Noninverting input of op amp connected to user pin */
-    AMP3CON1bits.REFEN = 0;
     /** Bit 9 ? IMONEN Enable Input Monitor bit
         1 Enables positive input to ADC ; 
         0 Disables positive input to ADC */    

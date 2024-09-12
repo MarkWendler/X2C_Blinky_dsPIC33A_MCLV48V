@@ -15,21 +15,12 @@
 #include "hal/pwm.h"
 #include "hal/clock.h"
 #include "hal/adc.h"
-#include "foc/sineTable.h"
-#include "foc/control.h"
-#include "foc/estim.h"
 #include "hal/measure.h"
-#include "foc/park.h"
-#include "foc/pi.h"
-#include "foc/svgen.h"
-#include "foc/userparms.h"
-#include "foc/estim.h"
-
-#include "Util.h"
 
 #include "X2CCode/X2CUtils.h"
 #include "X2CCode/X2CMain.h"
 #include "X2CCode/X2C.h"
+
 
 #define X2C_DATA __attribute__((section("x2cscope_data_buf")))
 #define X2C_BAUDRATE_DIVIDER 54 /** 100M/(16*54) = 115.7 kbps */
@@ -78,7 +69,7 @@ void __attribute__((__interrupt__, no_auto_psv))HAL_MC1ADCInterrupt(void)
     ib = ib<<4;
     
     
-    adcDataBuffer = AD1DATA0;
+    adcDataBuffer = AD1CH0DATA;
     HAL_MC1ADCInterruptFlagClear;
 }
 

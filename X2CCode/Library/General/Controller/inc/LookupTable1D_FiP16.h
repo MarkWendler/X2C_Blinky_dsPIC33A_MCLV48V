@@ -29,7 +29,7 @@
  */
 /*
  * This file is part of X2C. http://x2c.lcm.at/
- * $LastChangedRevision: 2584 $
+ * $LastChangedRevision: 3363 $
  */
 /* USERCODE-BEGIN:Description                                                                                         */
 /* Description: One dimensional look-up table with selectable number of entries */
@@ -51,7 +51,7 @@ typedef struct {
     uint16          ID;
     int16           *x;
     int16           Out;
-const  int16        *Table;
+const int16         *Table;
     int8            sfrX;
     uint16          maskX;
     uint16          idxOffsetX;
@@ -66,7 +66,7 @@ typedef struct {
     uint16          ID;
     INT16_PTR       x;
     int16           Out;
-const  INT16_PTR    Table;
+const INT16_PTR     Table;
     int8            sfrX;
     uint16          maskX;
     uint16          idxOffsetX;
