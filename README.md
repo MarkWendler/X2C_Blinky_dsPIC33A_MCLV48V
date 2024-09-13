@@ -53,6 +53,24 @@ Install MPLAB X IDE and MPLAB XC-DSC Compiler versions that support the device d
 - MPLAB XC-DSC Compiler installation steps, refer [link](https://microchipdeveloper.com/XCDSC:installation)
 - Update MPLAB X programmer/debugger interface plugins and Device Firmware Packages (DFP) [link](https://microchip.my.site.com/s/article/Programming-and-Debugging-the-dsPIC33A-on-MPLAB-X-IDE-v6-20-and-IPE-v6-20)
 
+### 4.2 Setup: Scilab and X2C Version
+
+Make sure you have the required X2C version loaded on Scilab.
+- Open Scilab and watch on the command line output which version is loaded:
+```
+Start X2C
+- Version: 6.5.3419
+``` 
+- If it is not this version, type on the Scilab Console:
+```
+initX2C(%f)
+```
+- Navigate to the desired X2C version installation's folder an execute on Scilab the following script: 
+```
+System / Scilab / Scripts / setup.sce
+```
+- Restart Scilab
+
 ### 4.2 RUN
 1. Open the project in MPLABX, then program the device. (Make and program button)
 2. LD2 should start to blink (Potentiometer sets the blinking frequency.)
