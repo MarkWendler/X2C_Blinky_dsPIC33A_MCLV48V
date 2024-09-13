@@ -2,7 +2,7 @@
 
 ## 1. INTRODUCTION
 This is a model based design with X2C. It is a minimalistic blinky demo code to show basic usage of the tools and the dsPIC33A MCU.
-
+Button switches
 
 ## 2. REQUIREMENTS
 
@@ -53,18 +53,20 @@ Install MPLAB X IDE and MPLAB XC-DSC Compiler versions that support the device d
 - MPLAB XC-DSC Compiler installation steps, refer [link](https://microchipdeveloper.com/XCDSC:installation)
 - Update MPLAB X programmer/debugger interface plugins and Device Firmware Packages (DFP) [link](https://microchip.my.site.com/s/article/Programming-and-Debugging-the-dsPIC33A-on-MPLAB-X-IDE-v6-20-and-IPE-v6-20)
 
+### 4.2 RUN
+1. Open the project in MPLABX, then program the device. (Make and program button)
+2. LD2 should start to blink (Potentiometer sets the blinking frequency.)
+3. Open scilab and navigate to X2Cscope folder, start init script or open the model
+4. Start the communicator (Orange boxes inside the model)
+5. Transform the model (Orange boxes inside the model)
+6. Check serial settings (At the communicator window, setup tab)
+7. Connect to the HW (Connection button)
+8. Monitor live signals with watch and scope functionalities
+
+
 ## 5.0 Peripheral Connections: 
-   **Interrupt to call X2C Model** : This is a UI component in the X2C MCC UI. User has options to select different 
-   peripherals(Timer,PWM,ADC) as the Interrupt source to call the X2C Model. Based on the model sample time 
-   users have to configure the interrupt rate to match the model sample time.
-   
-   For Example: If the Model sample rate is set as 10KHz(100 Micro Seconds)  and Timer1 is selcted to execute the model
-   (Interrupt to call X2C Model), then Timer1 needs to be configured    to have a period of 100 Micro Seconds(Interrupt 
-   is generated every 100 Micro Seconds).(Note: Any interrupt which can produce constant timing can be used.)
 
-   If the user has requirement for any other peripheral based on the model , they have to add the peripheral to the Project 
-   and configure them.
-
+### IO
 | board    | pin  | 
 |:--------:|:----:| 
 | SW1       |  RD9   |
@@ -73,7 +75,7 @@ Install MPLAB X IDE and MPLAB XC-DSC Compiler versions that support the device d
 | LED1     |  RD5   |
 | LED2     |  RC9   |
 
-## UART settings: 
+### UART settings: 
 
    **Communication**: For X2C Scope Communication currently UART is used. User needs to select the required UART instance 
    and Configure the UART.
@@ -85,6 +87,6 @@ Install MPLAB X IDE and MPLAB XC-DSC Compiler versions that support the device d
     _U1RXR = 44;
     _RP43R = 9;
 
-## Running the tests
+### Other Peripherals   
 
-Open the project in MPLABX, then program the device.
+TMR1 is set to 10kHz interrupt. Model calculation is done in the T1Interrupt.
