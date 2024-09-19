@@ -65,7 +65,10 @@ Start X2C
 ```
 initX2C(%f)
 ```
-- Navigate to the desired X2C version installation's folder an execute on Scilab the following script: 
+- If you have to download X2C do as follows:   
+    <p align="left">
+    <img  src="images/image.PNG"></p>
+- Navigate to the desired X2C version installation's folder and execute on Scilab the following script: 
 ```
 System / Scilab / Scripts / setup.sce
 ```
