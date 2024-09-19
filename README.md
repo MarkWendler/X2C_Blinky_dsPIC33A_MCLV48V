@@ -4,6 +4,10 @@
 This is a model based design with X2C. It is a minimalistic blinky demo code to show basic usage of the tools and the dsPIC33A MCU.
 This was generated without using MCC and demonstrated the use of the two button switches, potentiometer and two LEDs.
 
+### Video Tutorial
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/bFCGqGZ8dSI/0.jpg)](https://www.youtube.com/watch?v=bFCGqGZ8dSI)
+
 ## 2. REQUIREMENTS
 
 ### 2.2 Software Tools Used for Testing the firmware
@@ -114,7 +118,5 @@ System / Scilab / Scripts / setup.sce
 
 TMR1 is set to 10kHz interrupt. Model calculation is done in the T1Interrupt.
 
-### Video Tutorial
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/bFCGqGZ8dSI/0.jpg)](https://www.youtube.com/watch?v=bFCGqGZ8dSI)
 
