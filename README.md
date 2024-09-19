@@ -113,3 +113,8 @@ System / Scilab / Scripts / setup.sce
 ### Other Peripherals   
 
 TMR1 is set to 10kHz interrupt. Model calculation is done in the T1Interrupt.
+
+### Video Tutorial
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/bFCGqGZ8dSI/0.jpg)](https://www.youtube.com/watch?v=bFCGqGZ8dSI)
+
