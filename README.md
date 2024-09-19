@@ -65,7 +65,8 @@ Start X2C
 ```
 initX2C(%f)
 ```
-- If you have to download X2C do as follows:   
+- If you have to download X2C do as follows:
+  <img  src="images/InstallingX2C.gif"></p>
     <p align="left">
     <img  src="images/image.PNG"></p>
 - Navigate to the desired X2C version installation's folder and execute on Scilab the following script: 
