@@ -2,7 +2,11 @@
 
 ## 1. INTRODUCTION
 This is a model based design with X2C. It is a minimalistic blinky demo code to show basic usage of the tools and the dsPIC33A MCU.
-Button switches
+This was generated without using MCC and demonstrated the use of the two button switches, potentiometer and two LEDs.
+
+### Video Tutorial
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/bFCGqGZ8dSI/0.jpg)](https://www.youtube.com/watch?v=bFCGqGZ8dSI)
 
 ## 2. REQUIREMENTS
 
@@ -12,7 +16,7 @@ Button switches
 - MPLAB® XC16 Compiler **XC-DSC_3.10**
 - MPLAB® PICkit™ on board 4 In-Circuit Debugger 
 - Scilab v2023.1.0
-- X2C v6.5.3419
+- X2C v6.5.3419 (Nightly Builds Section)
 
 
 
@@ -36,7 +40,7 @@ Button switches
       <p align="left">
       <img  src="images/mclvpower.png"></p>
 
-3. <p style='text-align: justify;'>The board has an onboard programmer ‘PICkit™ On Board (PKoB4)’ , which can be used for debugging the dsPIC33CK256MP508. To use an on-board programmer/debugger, connect a micro-USB cable between Host PC and Connector J16 provided on the MCLV-48V-300W Inverter Board.</p>
+3. <p style='text-align: justify;'>The board has an onboard programmer ‘PICkit™ On Board (PKoB4)’ , which can be used for debugging the dsPIC33CK256MP508. To use an on-board programmer/debugger, connect a micro-USB cable between Host PC and Connector J16 provided on the MCLV-48V-300W Inverter Board. Note that the same micro-USB interface creates another UART port for serial communication with the MCU (USB to Dual UART). Example of USB to Dual UART here: https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/32-bit-mcus/applications-reference-designs-and-solutions/usb-to-dual-uart-bridge </p> 
 
       <p align="left">
      <img  src="images/mclvpkob4.png"></p>
@@ -65,7 +69,12 @@ Start X2C
 ```
 initX2C(%f)
 ```
-- Navigate to the desired X2C version installation's folder an execute on Scilab the following script: 
+- If you have to download X2C do as follows:
+    <p align="left">
+    <img  src="images/InstallingX2C.gif"></p>
+    <p align="left">
+    <img  src="images/image.png"></p>
+- Navigate to the desired X2C version installation's folder and execute on Scilab the following script: 
 ```
 System / Scilab / Scripts / setup.sce
 ```
@@ -108,3 +117,6 @@ System / Scilab / Scripts / setup.sce
 ### Other Peripherals   
 
 TMR1 is set to 10kHz interrupt. Model calculation is done in the T1Interrupt.
+
+
+
